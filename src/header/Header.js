@@ -19,6 +19,26 @@ export class Header extends LitElement {
         .first_div{
             display:flex
         }
+        input{
+            padding: 10px 16px;
+            border:none;
+            border-radius: 8px;
+            background-color: #f2f2f2;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            color: #444;
+            outline: none;
+            margin-right: 8px;
+            width: 250px;
+        }
+        .login_img {
+            height: 50px;
+            width: 50px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-right:20px;
+}
+
         `
     }
 
@@ -33,10 +53,12 @@ export class Header extends LitElement {
                 <h1>MyBank</h1></div>
             
             <div>
-            <input/>
+            <input placeholder="What are you looking for?" />
             <my-button label="Search" ?primary=true size="large" backgroundColor="white"></my-button>
             </div>
-            <div>Login</div>
+            <div>
+                <img src="/src/assets/login_icon.png" class="login_img"/>
+            </div>
         </header>`
     }
 }

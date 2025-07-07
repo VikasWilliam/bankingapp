@@ -1,16 +1,16 @@
 import { LitElement, css, html } from 'lit'
 import './header/Header'
 
-export class MyElement extends LitElement {
+export class MyBankElement extends LitElement {
   static get properties() {
     return {
-     
+
     }
   }
 
   constructor() {
     super()
-    
+
   }
 
   render() {
@@ -27,4 +27,4 @@ export class MyElement extends LitElement {
   }
 }
 
-window.customElements.define('my-element', MyElement)
+window.customElements.define('my-bank-element', MyBankElement)
