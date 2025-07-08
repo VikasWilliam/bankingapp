@@ -2,9 +2,16 @@ import { html, css, LitElement } from "lit-element";
 import "./MyButton"
 
 export class Header extends LitElement {
+    constructor() {
+        super();
+        this.keyword = "Enter search Item"
+    }
+
     static get styles() {
         return css`
         .header_item{
+            position: sticky;
+            top:0;
             padding:10px;
             background-color: tomato;
             display:flex;
@@ -13,7 +20,8 @@ export class Header extends LitElement {
             color:white;
             border-radius:5px;
             box-shadow:25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* ✅ Fixed */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+           
 
         }
         .first_div{
@@ -37,13 +45,22 @@ export class Header extends LitElement {
             object-fit: contain;
             border-radius: 8px;
             margin-right:20px;
-}
+        }
+        .login_img:hover{
+            transform: scale(1.5)
+        }
 
         `
     }
 
     static get properties() {
-        return {}
+        return {
+            keyword: { type: String }
+        }
+    }
+
+    handleInput(e) {
+        this.keyword = e.target.value != "" ? e.target.value : "Enter search Item";
     }
     render() {
         return html`
@@ -51,10 +68,10 @@ export class Header extends LitElement {
             <div class="first_div">
                 <img src="/src/assets/ing-logo-full.svg" alt="Logo" >
                 <h1>MyBank</h1></div>
-            
             <div>
-            <input placeholder="What are you looking for?" />
+            <input @input=${this.handleInput} placeholder="What are you looking for?" />
             <my-button label="Search" ?primary=true size="large" backgroundColor="white"></my-button>
+            <p>${this.keyword}</p>
             </div>
             <div>
                 <img src="/src/assets/login_icon.png" class="login_img"/>

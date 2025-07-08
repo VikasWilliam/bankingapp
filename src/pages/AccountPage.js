@@ -1,0 +1,19 @@
+import { LitElement, html, css } from "lit-element";
+
+export class AccountPage extends LitElement {
+    constructor() {
+        super();
+    }
+
+    static properties() {
+        return {};
+    }
+
+    render() {
+        return html`
+         <div>This is the Account page</div>
+        `
+    }
+}
+
+window.customElements.define('account-page', AccountPage);
