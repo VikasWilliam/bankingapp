@@ -17,7 +17,8 @@ export class MyButton extends LitElement {
       border-radius: 3em;
       font-weight: 700;
       line-height: 1;
-      font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, sans-serif;
+
     }
 
     .storybook-button--primary {

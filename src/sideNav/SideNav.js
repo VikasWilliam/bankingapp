@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element";
+import { Router } from '@vaadin/router';
 
 export class SideNav extends LitElement {
     constructor() {
@@ -44,12 +45,14 @@ export class SideNav extends LitElement {
     background-color: #fbeae6;
   }
     `
-
+    navigateTo(path) {
+        Router.go(path);
+    }
     render() {
         return html`
       <div class="nav-title">Navigation</div>
-      <div class="nav-item">🏠 Home</div>
-      <div class="nav-item">💼 Accounts</div>
+      <div class="nav-item"  @click=${() => this.navigateTo('/')}>🏠 Home</div>
+      <div class="nav-item" @click=${() => this.navigateTo('/account')}>💼 Accounts</div>
       <div class="nav-item">💳 Cards</div>
       <div class="nav-item">⚙️ Settings</div>`
     }

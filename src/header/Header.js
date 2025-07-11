@@ -4,7 +4,8 @@ import "./MyButton"
 export class Header extends LitElement {
     constructor() {
         super();
-        this.keyword = "Enter search Item"
+        // this.keyword = "Enter search Item";
+        this.searchWord = "";
     }
 
     static get styles() {
@@ -59,9 +60,17 @@ export class Header extends LitElement {
         }
     }
 
-    handleInput(e) {
-        this.keyword = e.target.value != "" ? e.target.value : "Enter search Item";
+    // handleInput(e) {
+    //     this.keyword = e.target.value != "" ? e.target.value : "Enter search Item";
+    // }
+
+    handleClick() {
+        const input = this.renderRoot.querySelector('input');
+        this.searchWord = input?.value || '';
+        console.log("===>", this.searchWord);
     }
+
+
     render() {
         return html`
         <header class="header_item">
@@ -69,8 +78,8 @@ export class Header extends LitElement {
                 <img src="/src/assets/ing-logo-full.svg" alt="Logo" >
                 <h1>MyBank</h1></div>
             <div>
-            <input @input=${this.handleInput} placeholder="What are you looking for?" />
-            <my-button label="Search" ?primary=true size="large" backgroundColor="white"></my-button>
+            <input placeholder="What are you looking for?"/>
+            <my-button label="Search" ?primary=true size="large" backgroundColor="white" @click=${this.handleClick}></my-button>
             <p>${this.keyword}</p>
             </div>
             <div>
