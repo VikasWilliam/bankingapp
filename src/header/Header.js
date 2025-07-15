@@ -66,8 +66,16 @@ export class Header extends LitElement {
 
     handleClick() {
         const input = this.renderRoot.querySelector('input');
-        this.searchWord = input?.value || '';
-        console.log("===>", this.searchWord);
+        const keyword = input?.value || '';
+        console.log("===>", keyword);
+
+
+        //dispatch custome event to pass data to parent element
+        this.dispatchEvent(new CustomEvent('search-keyword', {
+            detail: keyword,
+            bubbles: true,
+            composed: true,
+        }))
     }
 
 
