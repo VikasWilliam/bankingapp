@@ -1,9 +1,9 @@
 import { LitElement, html, css } from "lit-element";
-import storeItems from "../data/items.json";
+import storeItems from "../data/items.js";
 import "../header/MyButton";
 
 export class HomePage extends LitElement {
-    static styles = css`
+  static styles = css`
     .product {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -45,39 +45,39 @@ export class HomePage extends LitElement {
     }
   `;
 
-    static properties = {
-        searchKeyword: { type: String }
-    };
+  static properties = {
+    searchKeyword: { type: String }
+  };
 
-    constructor() {
-        super();
-        this.searchKeyword = "";
-    }
+  constructor() {
+    super();
+    this.searchKeyword = "";
+  }
 
-    // updated(changedProps) {
-    //     if (changedProps.has("searchKeyword")) {
-    //         console.log("Filter triggered with keyword:", this.searchKeyword);
-    //     }
-    // }
+  // updated(changedProps) {
+  //     if (changedProps.has("searchKeyword")) {
+  //         console.log("Filter triggered with keyword:", this.searchKeyword);
+  //     }
+  // }
 
-    handleClick(e) {
-        alert("button clicked");
-    }
+  handleClick(e) {
+    alert("button clicked");
+  }
 
-    get filteredItems() {
-        if (!this.searchKeyword) return storeItems;
+  get filteredItems() {
+    if (!this.searchKeyword) return storeItems;
 
-        const keyword = this.searchKeyword.toLowerCase();
-        return storeItems.filter((item) =>
-            item.name.toLowerCase().includes(keyword)
-        );
-    }
+    const keyword = this.searchKeyword.toLowerCase();
+    return storeItems.filter((item) =>
+      item.name.toLowerCase().includes(keyword)
+    );
+  }
 
-    render() {
-        return html`
+  render() {
+    return html`
       <div class="product">
         ${this.filteredItems.map(
-            (product) => html`
+      (product) => html`
             <div class="product_item">
               <img src=${product.imgUrl} alt=${product.name} />
               <div class="product_name">
@@ -92,10 +92,10 @@ export class HomePage extends LitElement {
               </div>
             </div>
           `
-        )}
+    )}
       </div>
     `;
-    }
+  }
 }
 
 window.customElements.define("home-page", HomePage);
